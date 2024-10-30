@@ -2,15 +2,19 @@ import { useEffect, useState } from "react"
 import Nav from "./Nav"
 import Article from "./Article"
 import ArticleEntry from "./ArticleEntry"
+import ArticleEdit from "./ArticleEdit"
 import { SignIn, SignOut } from "./Auth"
 import { useAuthentication } from "../services/authService"
 import { fetchArticles, createArticle } from "../services/articleService"
+import { db } from "../firebaseConfig"
+import { doc, updateDoc, Timestamp } from "firebase/firestore"
 import "./App.css"
 
 export default function App() {
   const [articles, setArticles] = useState([])
   const [article, setArticle] = useState(null)
   const [writing, setWriting] = useState(false)
+  const [editing, setEditing] = useState(false)
   const user = useAuthentication()
 
   // This is a trivial app, so just fetch all the articles only when
@@ -33,6 +37,30 @@ export default function App() {
     })
   }
 
+  function handleUpdateArticle(updatedArticle) {
+    updateArticle(updatedArticle).then((updatedArticle) => {
+      setArticles((prevArticles) =>
+        prevArticles.map((a) => (a.id === updatedArticle.id ? updatedArticle : a)) // Update the specific article
+      )
+      setArticle(updatedArticle)
+      setEditing(false)
+    })
+  }
+
+  function updateArticle(updatedArticle) {
+    const articleRef = doc(db, "articles", updatedArticle.id)
+    return updateDoc(articleRef, {
+      title: updatedArticle.title,
+      body: updatedArticle.body,
+      date: Timestamp.now()
+    }).then(() => {
+      return {
+        ...updatedArticle,
+        date: Timestamp.now(),
+      }
+    })
+  }
+
   return (
     <div className="App">
       <header>
@@ -47,8 +75,10 @@ export default function App() {
         ""
       ) : writing ? (
         <ArticleEntry addArticle={addArticle} />
+      ) : editing ? (
+        <ArticleEdit article={article} updateArticle={handleUpdateArticle} setEditing={setEditing} />
       ) : (
-        <Article article={article} setArticles={setArticles} setArticle={setArticle}/>
+        <Article article={article} setArticles={setArticles} setArticle={setArticle} setEditing={setEditing}/>
       )}
     </div>
   )
