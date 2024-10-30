@@ -6,7 +6,6 @@ export default function ArticleEdit({ article, updateArticle, setEditing }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Set initial state from the article prop when it changes
     setTitle(article.title);
     setBody(article.body);
   }, [article]);
@@ -17,7 +16,7 @@ export default function ArticleEdit({ article, updateArticle, setEditing }) {
     if (!title.trim() || !body.trim()) {
       setError("Both the title and body must be supplied");
     } else {
-      updateArticle({ id: article.id, title, body }); // Call the update function
+      updateArticle({ id: article.id, title, body });
     }
   }
 
@@ -34,7 +33,7 @@ export default function ArticleEdit({ article, updateArticle, setEditing }) {
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
         <button type="submit">Update</button>
-        <button type="button" onClick={() => setEditing(false)}>Cancel</button> {/* Button to cancel editing */}
+        <button type="button" onClick={() => setEditing(false)}>Cancel</button>
       </form>
     </div>
   );

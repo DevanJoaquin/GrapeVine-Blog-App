@@ -25,6 +25,7 @@ export default function ArticleEntry({ addArticle }) {
         <textarea
           rows="8"
           value={body}
+          placeholder="Enter message here..."
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
         <button type="submit">Create</button>
