@@ -48,7 +48,7 @@ export default function App() {
       ) : writing ? (
         <ArticleEntry addArticle={addArticle} />
       ) : (
-        <Article article={article} />
+        <Article article={article} setArticles={setArticles} setArticle={setArticle}/>
       )}
     </div>
   )
