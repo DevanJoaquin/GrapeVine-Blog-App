@@ -17,18 +17,12 @@ export default function App() {
   const [editing, setEditing] = useState(false)
   const user = useAuthentication()
 
-  // This is a trivial app, so just fetch all the articles only when
-  // a user logs in. A real app would do pagination. Note that
-  // "fetchArticles" is what gets the articles from the service and
-  // then "setArticles" writes them into the React state.
   useEffect(() => {
     if (user) {
       fetchArticles().then(setArticles)
     }
   }, [user])
 
-  // Update the "database" *then* update the internal React state. These
-  // two steps are definitely necessary.
   function addArticle({ title, body }) {
     createArticle({ title, body }).then((article) => {
       setArticle(article)
@@ -40,7 +34,7 @@ export default function App() {
   function handleUpdateArticle(updatedArticle) {
     updateArticle(updatedArticle).then((updatedArticle) => {
       setArticles((prevArticles) =>
-        prevArticles.map((a) => (a.id === updatedArticle.id ? updatedArticle : a)) // Update the specific article
+        prevArticles.map((a) => (a.id === updatedArticle.id ? updatedArticle : a))
       )
       setArticle(updatedArticle)
       setEditing(false)
@@ -64,7 +58,7 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        Blog
+        The Grape Vine
         {user && <button onClick={() => setWriting(true)}>New Article</button>}
         {!user ? <SignIn /> : <SignOut />}
       </header>
