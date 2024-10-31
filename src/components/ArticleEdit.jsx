@@ -32,8 +32,10 @@ export default function ArticleEdit({ article, updateArticle, setEditing }) {
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
-        <button type="submit">Update</button>
-        <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+        <div>
+        <button className="action-button edit-button" type="submit">Update</button>
+        <button className="action-button delete-button" type="button" onClick={() => setEditing(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   );
