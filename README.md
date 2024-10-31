@@ -1,5 +1,5 @@
-# A Blog Starter App
+# The Grape Vine: A Blog App
 
-This is **Homework Three**, a blog app using Firebase.
+This is **Homework Three**, a blog app named The Grape Vine created using Firebase.
 
-[click here](https://devanjoaquin-blog-app.web.app)
+[Click Here](https://devanjoaquin-blog-app.web.app)
