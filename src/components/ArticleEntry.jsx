@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function ArticleEntry({ addArticle }) {
+export default function ArticleEntry({ addArticle, setWriting }) {
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [error, setError] = useState(null)
@@ -29,6 +29,7 @@ export default function ArticleEntry({ addArticle }) {
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
         <button type="submit">Create</button>
+        <button type="submit" onClick={() => setWriting(false)}>Cancel</button>
       </form>
     </div>
   )

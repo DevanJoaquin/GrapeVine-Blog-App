@@ -74,7 +74,7 @@ export default function App() {
       {!user ? (
         ""
       ) : writing ? (
-        <ArticleEntry addArticle={addArticle} />
+        <ArticleEntry addArticle={addArticle} setWriting={setWriting} />
       ) : editing ? (
         <ArticleEdit article={article} updateArticle={handleUpdateArticle} setEditing={setEditing} />
       ) : (

@@ -1,6 +1,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  width: 100vw;
+  overflow: hidden;
+  background: linear-gradient(lavender,#eec2f6);
 }
 
 .App {
@@ -8,16 +11,27 @@ body {
   grid-template-rows: min-content auto;
   grid-template-columns: 250px auto;
   height: 100vh;
-  overflow: scroll;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  background-color: black;
+  background-color: purple;
   color: white;
   grid-column: 1 / span 2;
   padding: 10px 5px;
+  align-items: center;
+  font-size:1.5em;
+  font-weight: bold;
+}
+
+header button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+
 }
 
 form {
@@ -31,8 +45,8 @@ form input,
 form textarea {
   margin-bottom: 10px;
   width: 300px;
-  background-color: #dddddd;
-  color: gray;
+  background-color: #dddddd6a;
+  color: black;
   padding: 1em;
   border-radius: 5px;
   border: 2px solid transparent;
@@ -43,10 +57,11 @@ nav,
 article {
   height: 100%;
   padding: 10px;
+  overflow: scroll;
 }
 
 nav {
-  background-color: #dee9ff;
+  background-color: skyblue;
 }
 
 nav p:hover {
@@ -60,6 +75,7 @@ article .date {
 
 article .body {
   white-space: break-spaces;
+  text-wrap: wrap;
 }
 
 .error {
