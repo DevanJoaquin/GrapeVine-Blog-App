@@ -25,8 +25,8 @@ export default function Article({ article, setArticles, setArticle, setEditing }
           <h2>{article.title}</h2>
           <p className="date">{`Posted: ${displayTime}`}</p>
           <p className="body">{article.body}</p>
-          <button onClick={handleDelete}>Delete Article</button>
-          <button onClick={() => setEditing(true)}>Edit Article</button>
+          <button className="action-button edit-button" onClick={() => setEditing(true)}>Edit Article</button>
+          <button className="action-button delete-button" onClick={handleDelete}>Delete Article</button>
         </section>
       )}
     </article>

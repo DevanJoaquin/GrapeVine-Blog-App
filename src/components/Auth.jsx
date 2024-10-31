@@ -10,15 +10,15 @@ export function SignOut() {
   return (
     <div>
       {user && (
-        <>
+        <div className="user-info">
           Hello, {loggedInUserDisplayName()}
           <img
             src = {user.photoURL}
-            style = {{ width: 30, height: 30, borderRadius: '50%'}}
+            style = {{ width: 40, height: 40, borderRadius: '50%'}}
           />
-        </>
+          <button className="action-button delete-button" onClick={logout}>Sign Out</button>
+        </div>
       )}
-      <button onClick={logout}>Sign Out</button>
     </div>
-  )
+  ) 
 }

@@ -28,8 +28,10 @@ export default function ArticleEntry({ addArticle, setWriting }) {
           placeholder="Enter message here..."
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
-        <button type="submit">Create</button>
-        <button type="submit" onClick={() => setWriting(false)}>Cancel</button>
+        <section>
+        <button className="action-button edit-button" type="submit">Create</button>
+        <button className="action-button delete-button" type="submit" onClick={() => setWriting(false)}>Cancel</button>
+        </section>
       </form>
     </div>
   )
